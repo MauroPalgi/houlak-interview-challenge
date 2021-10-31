@@ -1,13 +1,13 @@
 import React from 'react';
 // import useAuth from "./hooks/useAuth";
 
-const App = () => {
+const Home = () => {
 
   return (
-    <div className="App">
-      <p>Hello World!</p>
+    <div className="home">
+      <p>Hello Home!</p>
     </div>
   );
 }
 
-export default App;
+export default Home;
