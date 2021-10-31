@@ -18,8 +18,8 @@ ReactDOM.render(
       <Provider store={store}>
       <NavBar />
         <Route exact path="/" component={App} />
-        <Route exact path="/home" component={Home} />
-        <Route component={NotFound} />        
+        <Route path="/home" component={Home} />
+        <Route path="*" component={NotFound} />        
       </Provider>
     </Router>
   </React.StrictMode>,
