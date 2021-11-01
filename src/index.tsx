@@ -1,29 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { store } from './app/store';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // COMPONENT
-import  NavBar  from "./components/NavBar";
+import NavBar from "./components/NavBar";
 
 // PAGES
-import  Home  from "./pages/Home";
-import  NotFound  from "./pages/NotFound";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Provider store={store}>
-      <NavBar />
-        <Route exact path="/" component={App} />
-        <Route path="/home" component={Home} />
-        <Route path="*" component={NotFound} />        
-      </Provider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <App />
+          </Route>
+          <Route path="/home" component={Home} />
+          <Route />
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-

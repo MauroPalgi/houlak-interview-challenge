@@ -1,11 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import spotifySlice from "../features/spotifySlice";
 
-
-
-
-
-
 export const store = configureStore({
   reducer: {
     spotify: spotifySlice,

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-
+// INTERFACE
 interface IInitialState {
   access_token: string;
   expires_in: string;
@@ -12,7 +12,15 @@ const initialState: IInitialState = {
   expires_in: "",
   token_type: "",
 };
-// me quede en 1137 del tutorial de react redux
+
+// const fetchSpotifyData = createAsyncThunk(
+//   'users/fetchByIdStatus',
+//   async (userId, thunkAPI) => {
+//     const response = await userAPI.fetchById(userId)
+//     return response.data
+//   }
+// )
+
 const spotifySlice = createSlice({
   name: "spotify",
   initialState,
@@ -20,7 +28,7 @@ const spotifySlice = createSlice({
     setStateValues: (state, action) => {
       console.log(action.payload);
       if (action.payload) {
-        const { access_token, expires_in, token_type } = action.payload;      
+        const { access_token, expires_in, token_type } = action.payload;
         state.access_token = access_token;
         state.expires_in = expires_in;
         state.token_type = token_type;
@@ -28,22 +36,15 @@ const spotifySlice = createSlice({
     },
     updateRefreshID: (state, action) => {
       console.log("update");
-      
     },
   },
-  // extraReducers: {
-  //   [getAuth.pending as any]: (state, action) => {
-  //     // viene del thunk y los estados corresponden a que el thunk
-  //     state.status = "loading"; // devuelve una promesa
-  //   },
-  //   [getAuth.fulfilled as any]: (state, action) => {
-  //     state.status = "success";
-  //     state.user = action.payload;
-  //   },
-  //   [getAuth.rejected as any]: (state, action) => {
-  //     state.status = "failed";
-  //   },
-  // },
+  extraReducers: {
+    // Add reducers for additional action types here, and handle loading state as needed
+    // [fetchUserById.fulfilled]: (state, action) => {
+    //   // Add user to the state array
+    //   state.entities.push(action.payload);
+    // },
+  },
 });
 
 export default spotifySlice.reducer;
